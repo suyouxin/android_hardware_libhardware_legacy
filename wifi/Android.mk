@@ -1,5 +1,8 @@
 # Copyright 2006 The Android Open Source Project
 
+LOCAL_CFLAGS += -DCONFIG_CTRL_IFACE_CLIENT_DIR=\"/data/misc/wifi/sockets\"
+LOCAL_CFLAGS += -DCONFIG_CTRL_IFACE_CLIENT_PREFIX=\"wpa_ctrl_\"
+
 ifdef WIFI_DRIVER_MODULE_PATH
 LOCAL_CFLAGS += -DWIFI_DRIVER_MODULE_PATH=\"$(WIFI_DRIVER_MODULE_PATH)\"
 endif
@@ -30,11 +33,11 @@ LOCAL_CFLAGS += -DMARVELL_WIFI
 LOCAL_SHARED_LIBRARIES += libMarvellWireless
 LOCAL_C_INCLUDES += vendor/marvell/generic/libMarvellWireless
 endif
-
 LOCAL_SRC_FILES += wifi/wifi.c
 
 ifdef WPA_SUPPLICANT_VERSION
 LOCAL_CFLAGS += -DLIBWPA_CLIENT_EXISTS
 LOCAL_SHARED_LIBRARIES += libwpa_client
 endif
+
 LOCAL_SHARED_LIBRARIES += libnetutils
